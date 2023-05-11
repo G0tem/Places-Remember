@@ -2,7 +2,7 @@ from django.http import HttpResponse, HttpResponseNotFound
 from django.shortcuts import render
 
 def index(request):
-    return HttpResponse('Страница приложения Visited')
+    return render(request, 'visited/index.html')
 
 def newpost(request):
     return HttpResponse('Добавить новое место')
