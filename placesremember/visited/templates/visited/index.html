@@ -8,9 +8,14 @@
 	{% endif %}
 
 	{% for p in posts %}
-			<li><h2>{{p.name}}</h2>
+			<li>
+				<div class="article-panel">
+					<p class="first">Координаты: {{p.latitude}} и {{p.longitude}}</p>
+					<p class="last">Дата: {{p.time_create|date:"d-m-Y H:i:s"}}</p>
+				</div>
+				<h2>{{p.name}}</h2>
 	{% autoescape on %}
-	{{p.content|linebreaks|truncatewords:50}}
+	{{p.comment}}
 	{% endautoescape %}
 			<div class="clear"></div>
 			</li>

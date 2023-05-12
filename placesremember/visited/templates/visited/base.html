@@ -3,7 +3,7 @@
 <html>
 <head>
 	<title>Главная страница</title>
-	<link type="text/css" href="{% static 'women/css/styles.css' %}" rel="stylesheet" />
+	<link type="text/css" href="{% static 'visited/css/styles.css' %}" rel="stylesheet" />
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 </head>
 <body>
@@ -14,10 +14,10 @@
 			<ul id="mainmenu" class="mainmenu">
 
 {% for m in menu %}
-	{% if not forloop.last %}
-			<li><a href="#">{{m.title}}</a></li>
+	{% if forloop.first %}
+			<li><a href="{% url 'home' %}">{{m.title}}</a></li>
 	{% else %}
-			<li class="last"><a href="#">{{m.title}}</a></li>
+			<li class="last"><a href="{% url 'login' %}">{{m.title}}</a></li>
 	{% endif %}
 {% endfor %}
 			</ul>
@@ -31,10 +31,6 @@
 
 <table class="table-content" border=0 cellpadding="0" cellspacing="0">
 <tr>
-
-
-
-
 <td valign="top" class="content">
 
 <!-- Блок контента -->
@@ -46,6 +42,7 @@
 
 </td></tr></table>
 </td></tr>
+
 <!-- Footer -->
 <tr><td valign=top>
 	<div id="footer">
