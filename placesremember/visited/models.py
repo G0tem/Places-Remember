@@ -8,3 +8,8 @@ class Places(models.Model):
     name = models.CharField(max_length=255)
     comment = models.TextField(blank=True)
     time_create = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        verbose_name = "Посещенные места"
+        verbose_name_plural = "Посещенные места"
+        ordering = ['-time_create']
