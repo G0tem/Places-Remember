@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Главная страница</title>
+	<title>{{ title }}</title>
 	<link type="text/css" href="{% static 'visited/css/styles.css' %}" rel="stylesheet" />
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 </head>
@@ -14,17 +14,16 @@
 			<ul id="mainmenu" class="mainmenu">
 
 {% for m in menu %}
-	{% if forloop.first %}
-			<li><a href="{% url 'home' %}">{{m.title}}</a></li>
+	{% if not forloop.last %}
+			<li><a href="{% url m.url_name %}">{{m.title}}</a></li>
 	{% else %}
-			<li class="last"><a href="{% url 'login' %}">{{m.title}}</a></li>
+			<li class="last"><a href="{% url m.url_name %}">{{m.title}}</a></li>
 	{% endif %}
 {% endfor %}
 			</ul>
 			<div class="clear"></div>
 
 <div class="description-site" style="text-align: center">Приложение, с помощью которого люди смогут хранить свои впечатления о посещаемых местах.
-	<p><a href="{% url 'addpost' %}">Добавить воспоминание</a></p>
 </div>
 		</div>
 {% endblock mainmenu %}

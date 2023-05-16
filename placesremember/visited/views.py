@@ -1,30 +1,35 @@
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import HttpResponse, HttpResponseNotFound
 from django.shortcuts import render, redirect
+from django.urls import reverse_lazy
+from django.views.generic import ListView, CreateView
 
 from .forms import *
 from .models import *
+from .utils import *
 
-menu = [{"title": 'Places Remember', 'url_name': 'home'},
-        {"title": 'Войти с помощью Google', 'url_name': 'login'},
-        ]
-def index(request):
-    posts = Places.objects.all()
-    context = {
-        "posts": posts,
-        "menu": menu,
-    }
-    return render(request, 'visited/index.html', context=context)
+class VisitedHome(DataMixin, ListView):
+    model = Places
+    template_name = 'visited/index.html'
+    context_object_name = 'posts'
 
-def addpost(request):
-    if request.method == 'POST':
-        form = AddPostForm(request.POST)
-        if form.is_valid():
-            # print(form.cleaned_data)
-            form.save()
-            return redirect('home')
-    else:
-        form = AddPostForm()
-    return render(request, 'visited/addpost.html', {'menu': menu, 'form': form})
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super().get_context_data(**kwargs)
+        c_def = self.get_user_context(title='Главная страница')
+        return dict(list(context.items()) + list(c_def.items()))
+
+    def get_queryset(self):
+        return Places.objects.filter(user=1)  # нужно чтобы фильтровало только id авторизованного
+
+class AddPost(LoginRequiredMixin, DataMixin, CreateView):
+    form_class = AddPostForm
+    template_name = 'visited/addpost.html'
+    success_url = reverse_lazy('home')
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super().get_context_data(**kwargs)
+        c_def = self.get_user_context(title='Добавление воспоминания')
+        return dict(list(context.items()) + list(c_def.items()))
 
 def login(request):
     return HttpResponse('Авторизация')
