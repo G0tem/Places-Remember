@@ -1,4 +1,6 @@
 from django import forms
+from django.template.context_processors import request
+
 from .models import *
 
 class AddPostForm(forms.ModelForm):

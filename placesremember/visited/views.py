@@ -9,6 +9,7 @@ from .models import *
 from .utils import *
 
 class VisitedHome(DataMixin, ListView):
+    paginate_by = 3
     model = Places
     template_name = 'visited/index.html'
     context_object_name = 'posts'
@@ -19,7 +20,11 @@ class VisitedHome(DataMixin, ListView):
         return dict(list(context.items()) + list(c_def.items()))
 
     def get_queryset(self):
-        return Places.objects.filter(user=1)  # нужно чтобы фильтровало только id авторизованного
+        user_id = self.request.user.id
+        return Places.objects.filter(user=user_id)  # нужно чтобы фильтровало только id авторизованного
+        # return self.request.user.places_set.all()
+        # user = self.request.user
+        # return user.places_set.all() if user else None
 
 class AddPost(LoginRequiredMixin, DataMixin, CreateView):
     form_class = AddPostForm
