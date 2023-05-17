@@ -10,7 +10,7 @@ class PlacesAdmin(admin.ModelAdmin):
 
 admin.site.register(Places, PlacesAdmin)
 
-class PlacesAdmin(admin.ModelAdmin):
-    list_display = ('id', 'user', 'avatar', 'user_id')
+class ProfileAdmin(admin.ModelAdmin):
+    list_display = ('id', 'avatar', 'user', 'user_id')
 
-admin.site.register(Profile)
+admin.site.register(Profile, ProfileAdmin)

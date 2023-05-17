@@ -1,3 +1,4 @@
+from django.contrib.auth import logout
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import HttpResponse, HttpResponseNotFound
 from django.shortcuts import render, redirect
@@ -39,6 +40,10 @@ class AddPost(LoginRequiredMixin, DataMixin, CreateView):
 
 def login(request):
     return HttpResponse('Авторизация')
+
+def logout_user(request):
+    logout(request)
+    return redirect('home')
 
 def pageNotFound(request, exception):
     return HttpResponseNotFound('<h1>Страница не найдена</h1>')
