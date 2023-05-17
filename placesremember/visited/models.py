@@ -13,3 +13,11 @@ class Places(models.Model):
         verbose_name = "Посещенные места"
         verbose_name_plural = "Посещенные места"
         ordering = ['-time_create']
+
+class Profile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE, verbose_name="Пользователь")
+    avatar = models.ImageField(upload_to='users_avatars', blank=True, verbose_name="Фото")
+
+    class Meta:
+        verbose_name = 'Профиль'
+        verbose_name_plural = 'Профили'

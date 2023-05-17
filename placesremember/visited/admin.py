@@ -9,3 +9,8 @@ class PlacesAdmin(admin.ModelAdmin):
     list_filter = ('user_id', )
 
 admin.site.register(Places, PlacesAdmin)
+
+class PlacesAdmin(admin.ModelAdmin):
+    list_display = ('id', 'user', 'avatar', 'user_id')
+
+admin.site.register(Profile)
