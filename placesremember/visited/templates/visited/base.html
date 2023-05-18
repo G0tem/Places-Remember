@@ -18,7 +18,7 @@
 {% endfor %}
 
 			{% if request.user.is_authenticated %}
-<!-- Аву бы сюда -->
+<!-- Аву бы сюда --><li><img src="{{ user.profile.avatar.url }}" height=45 width=45"></li>
 			<li class="last"> {{user.username}} | <a href="{% url 'logout' %}">Выйти</a></li>
 			{% else %}
 			<li class="last"><a href="{% provider_login_url "google" %}">Войти с помощью Google</a></li>
