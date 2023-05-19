@@ -36,6 +36,8 @@ class AddPost(LoginRequiredMixin, DataMixin, CreateView):
         context = super().get_context_data(**kwargs)
         c_def = self.get_user_context(title='Добавить воспоминания')
         context['form'].initial['user'] = self.request.user
+        # context['form'].initial['latitude'] = self.request.latitude
+        # context['form'].initial['longitude'] = self.request.longitude
         return dict(list(context.items()) + list(c_def.items()))
 
 def login(request):
@@ -47,4 +49,3 @@ def logout_user(request):
 
 def pageNotFound(request, exception):
     return HttpResponseNotFound('<h1>Страница не найдена</h1>')
-

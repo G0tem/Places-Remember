@@ -5,6 +5,7 @@
 	<title>{{ title }}</title>
 	<link type="text/css" href="{% static 'visited/css/styles.css' %}" rel="stylesheet" />
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCgooVnFSJQO4USb2PXjij8WxvgvHW15P4"></script>
 </head>
 <body>
 <table class="table-page" border=0 cellpadding="0" cellspacing="0">
@@ -18,8 +19,9 @@
 {% endfor %}
 
 			{% if request.user.is_authenticated %}
-<!-- Аву бы сюда --><li><img src="{{ user.profile.avatar.url }}" height=45 width=45"></li>
+<!-- Аву бы сюда -->
 			<li class="last"> {{user.username}} | <a href="{% url 'logout' %}">Выйти</a></li>
+			<li class="last"><img src="{{ user.profile.avatar.url }}" height=40 width=40"></li>
 			{% else %}
 			<li class="last"><a href="{% provider_login_url "google" %}">Войти с помощью Google</a></li>
 			{% endif %}
@@ -51,6 +53,7 @@
 		<p>&copy; 2023 Пусть у вас будет больше хороших воспоминаний!</p>
 	</div>
 </td></tr></table>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCgooVnFSJQO4USb2PXjij8WxvgvHW15P4&callback=initMap"></script>
 <!-- Конец footer'а и страницы -->
 </body>
 </html>

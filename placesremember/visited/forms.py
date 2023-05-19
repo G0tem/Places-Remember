@@ -10,4 +10,5 @@ class AddPostForm(forms.ModelForm):
 
         widgets = {
             'user': forms.TextInput(attrs={'style': 'display:none'}),
+            'comment': forms.Textarea(attrs={'cols': 20, 'rows': 10}),
         }
