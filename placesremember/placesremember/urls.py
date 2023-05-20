@@ -24,8 +24,7 @@ from visited.views import *
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('visited.urls')),
-
-    path(r'^accounts/', include('allauth.urls')),
+    path('accounts/', include('allauth.urls')),
 
 ]
 

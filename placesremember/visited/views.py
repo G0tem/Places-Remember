@@ -9,6 +9,7 @@ from .forms import *
 from .models import *
 from .utils import *
 
+
 class VisitedHome(DataMixin, ListView):
     paginate_by = 3
     model = Places
@@ -36,8 +37,8 @@ class AddPost(LoginRequiredMixin, DataMixin, CreateView):
         context = super().get_context_data(**kwargs)
         c_def = self.get_user_context(title='Добавить воспоминания')
         context['form'].initial['user'] = self.request.user
-        # context['form'].initial['latitude'] = self.request.latitude
-        # context['form'].initial['longitude'] = self.request.longitude
+        context['form'].initial['latitude'] = 56.83831
+        context['form'].initial['longitude'] = 60.603611
         return dict(list(context.items()) + list(c_def.items()))
 
 def login(request):
