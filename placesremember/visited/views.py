@@ -24,9 +24,7 @@ class VisitedHome(DataMixin, ListView):
     def get_queryset(self):
         user_id = self.request.user.id
         return Places.objects.filter(user=user_id)  # нужно чтобы фильтровало только id авторизованного
-        # return self.request.user.places_set.all()
-        # user = self.request.user
-        # return user.places_set.all() if user else None
+
 
 class AddPost(LoginRequiredMixin, DataMixin, CreateView):
     form_class = AddPostForm
@@ -40,6 +38,7 @@ class AddPost(LoginRequiredMixin, DataMixin, CreateView):
         context['form'].initial['latitude'] = 56.83831
         context['form'].initial['longitude'] = 60.603611
         return dict(list(context.items()) + list(c_def.items()))
+
 
 def login(request):
     return HttpResponse('Авторизация')

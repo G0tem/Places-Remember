@@ -21,7 +21,7 @@
 			{% if request.user.is_authenticated %}
 <!-- Аву бы сюда -->
 			<li class="last"> {{user.username}} | <a href="{% url 'logout' %}">Выйти</a></li>
-			<li class="last"><img src="{{ user.profile.avatar.url }}" height=40 width=40"></li>
+			<li class="last"><img src="{{ avatar }}" height=40 width=40"></li>
 			{% else %}
 			<li class="last"><a href="{% provider_login_url "google" %}">Войти с помощью Google</a></li>
 			{% endif %}
