@@ -1,6 +1,7 @@
 from django.contrib.auth.models import User
 from django.db import models
 
+
 class Places(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     latitude = models.FloatField(null=True)
@@ -13,6 +14,7 @@ class Places(models.Model):
         verbose_name = "Посещенные места"
         verbose_name_plural = "Посещенные места"
         ordering = ['-time_create']
+
 
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, verbose_name="Пользователь")

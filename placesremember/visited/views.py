@@ -1,7 +1,7 @@
 from django.contrib.auth import logout
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.http import HttpResponse, HttpResponseNotFound
-from django.shortcuts import render, redirect
+from django.http import HttpResponseNotFound
+from django.shortcuts import redirect
 from django.urls import reverse_lazy
 from django.views.generic import ListView, CreateView
 
@@ -23,7 +23,7 @@ class VisitedHome(DataMixin, ListView):
 
     def get_queryset(self):
         user_id = self.request.user.id
-        return Places.objects.filter(user=user_id)  # нужно чтобы фильтровало только id авторизованного
+        return Places.objects.filter(user=user_id)  # фильтр id авторизованного
 
 
 class AddPost(LoginRequiredMixin, DataMixin, CreateView):
@@ -35,17 +35,19 @@ class AddPost(LoginRequiredMixin, DataMixin, CreateView):
         context = super().get_context_data(**kwargs)
         c_def = self.get_user_context(title='Добавить воспоминания')
         context['form'].initial['user'] = self.request.user
-        context['form'].initial['latitude'] = 56.83831
+        context['form'].initial['latitude'] = 56.83831  # пример координат
         context['form'].initial['longitude'] = 60.603611
         return dict(list(context.items()) + list(c_def.items()))
 
-
-def login(request):
-    return HttpResponse('Авторизация')
 
 def logout_user(request):
     logout(request)
     return redirect('home')
 
+
 def pageNotFound(request, exception):
     return HttpResponseNotFound('<h1>Страница не найдена</h1>')
+
+
+# def login(request):
+#     return HttpResponse('Авторизация')

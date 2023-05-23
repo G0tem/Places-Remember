@@ -1,3 +1,11 @@
 from django.test import TestCase
 
-# Create your tests here.
+
+class TestVisited(TestCase):
+    def test_visited_home(self):
+        response = self.client.get('/')
+        self.assertEqual(response.status_code, 200)
+
+    def test_visited_add(self):
+        response = self.client.post('/addpost/')
+        self.assertEqual(response.status_code, 302)
