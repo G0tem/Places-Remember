@@ -5,9 +5,9 @@ from django.shortcuts import redirect
 from django.urls import reverse_lazy
 from django.views.generic import ListView, CreateView
 
-from .forms import *
-from .models import *
-from .utils import *
+from .forms import AddPostForm
+from .models import Places, Profile
+from .utils import DataMixin
 
 
 class VisitedHome(DataMixin, ListView):

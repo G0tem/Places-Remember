@@ -7,5 +7,5 @@ class TestVisited(TestCase):
         self.assertEqual(response.status_code, 200)
 
     def test_visited_add(self):
-        response = self.client.post('/addpost/')
+        response = self.client.git('/addpost/')
         self.assertEqual(response.status_code, 302)

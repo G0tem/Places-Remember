@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import *
+from .models import Places, Profile
 
 class PlacesAdmin(admin.ModelAdmin):
     list_display = ('id', 'name', 'comment', 'time_create', 'user_id')

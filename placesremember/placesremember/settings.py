@@ -39,7 +39,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'visited.apps.VisitedConfig',
-    'rest_framework',
 
     'django.contrib.sites',
     'allauth',
