@@ -6,7 +6,7 @@ from django.urls import reverse_lazy
 from django.views.generic import ListView, CreateView
 
 from .forms import AddPostForm
-from .models import Places, Profile
+from .models import Places
 from .utils import DataMixin
 
 

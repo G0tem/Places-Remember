@@ -1,7 +1,7 @@
 from django import forms
-from django.template.context_processors import request
 
 from .models import Places
+
 
 class AddPostForm(forms.ModelForm):
     class Meta:

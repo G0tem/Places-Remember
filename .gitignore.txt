@@ -1,0 +1,2 @@
+/venv
+/visited/db.sqlite3
