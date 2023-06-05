@@ -47,7 +47,3 @@ def logout_user(request):
 
 def pageNotFound(request, exception):
     return HttpResponseNotFound('<h1>Страница не найдена</h1>')
-
-
-# def login(request):  # будет авториз через разные сервисы
-#     return HttpResponse('Авторизация')
