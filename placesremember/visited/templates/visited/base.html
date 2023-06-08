@@ -23,10 +23,10 @@
 	{% if avatar %}
 		<li class="last"><img src="{{ avatar }}" height=40 width=40"></li>
 	{% else %}
-		<li class="last"><img src="{{ user.profile.avatar.url }}" height=40 width=40"></li>
+		<li class='last'><img src='{{ user.profile.avatar.url }}' height=40 width=40"></li>
 	{% endif %}
 {% else %}
-	<li class="last"><a href="{% provider_login_url "google" %}">Войти с помощью Google</a></li>
+	<li class='last'><a href="{% provider_login_url 'google' %}">Войти с помощью Google</a></li>
 {% endif %}
 </ul>
 <div class="clear"></div>

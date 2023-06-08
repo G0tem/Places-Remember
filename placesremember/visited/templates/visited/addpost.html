@@ -2,26 +2,32 @@
 
 {% block content %}
 
-<form action="{% url 'addpost' %}" method="post">
+<form action="{% url 'addpost' %}" method='post'>
     {% csrf_token %}
 
-    <div class="form-error">{{ form.non_field_errors }}</div>
+    <div class='form-error'>{{ form.non_field_errors }}</div>
 
 {% for f in form %}
-
-<p><label class="form-label" for="{{ f.id_for_label }}">{{f.label}}: </label>{{ f }}</p>
-    <div class="form-error">{{ f.errors }}</div>
-
+{% if f.id_for_label == 'id_latitude' %}
+    <p><label class='form-label' for='{{ f.id_for_label }}'>{{f.label}}: </label><input type='text' id='latitude' name='latitude' required id='id_latitude'></p>
+    <div class='form-error'>{{ f.errors }}</div>
+{% elif f.id_for_label == 'id_longitude' %}
+    <p><label class='form-label' for='{{ f.id_for_label }}'>{{f.label}}: </label><input type='text' id='longitude' name='longitude' required id='id_longitude'></p>
+    <div class='form-error'>{{ f.errors }}</div>
+{% else %}
+<p><label class='form-label' for='{{ f.id_for_label }}'>{{f.label}}: </label>{{ f }}</p>
+    <div class='form-error'>{{ f.errors }}</div>
+{% endif %}
 {% endfor %}
 
-    <button type="submit">Сохранить</button>
+    <button type='submit'>Сохранить</button>
 </form>
 
 
 <style>
     #map {width:100%; height:600px;}
 </style>
-<div id="map"></div>
+<div id='map'></div>
 
     <script>
       function initMap() {
@@ -42,7 +48,4 @@
       }
 
     </script>
-    <input type="hidden" id="latitude" name="latitude" value="">
-    <input type="hidden" id="longitude" name="longitude" value="">
-
 {% endblock %}
