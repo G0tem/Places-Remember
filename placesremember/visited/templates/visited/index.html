@@ -1,54 +1,53 @@
 {% extends 'visited/base.html' %}
 
 {% block content %}
-<ul class="list-articles">
+<ul class='list-articles'>
 	{% if not posts %}
 		<div>У вас нет ни одного воспоминания</div>
 	{% endif %}
 
 	{% for p in posts %}
 			<li>
-				<div class="article-panel">
-					<p class="first">Координаты: {{p.latitude}} и {{p.longitude}}</p>
-					<p class="last">Дата: {{p.time_create|date:"d-m-Y H:i:s"}}</p>
+				<div class='article-panel'>
+					<p class='first'>Координаты: {{p.latitude}} и {{p.longitude}}</p>
+					<p class='last'>Дата: {{p.time_create|date:"d-m-Y H:i:s"}}</p>
 				</div>
 				<h2>{{p.name}}</h2>
 	{% autoescape on %}
 	{{p.comment}}
 	{% endautoescape %}
-			<div class="clear"></div>
+			<div class='clear'></div>
 			</li>
 	{% endfor %}
 </ul>
 <!-- Пагинатор -->
 		{% if page_obj %}
-		<nav class="list-pages">
+		<nav class='list-pages'>
 			<ul>
 
 				{% if page_obj.has_previous %}
-				<li class="page-num">
-					<a href="?page={{ page_obj.previous_page_number }}">&lt;</a>
+				<li class='page-num'>
+					<a href='?page={{ page_obj.previous_page_number }}'>&lt;</a>
 				</li>
 				{% endif %}
 
 				{% for p in paginator.page_range %}
 
 				{% if page_obj.number == p %}
-				<li class="page-num page-num-selected">{{ p }}</li>
+				<li class='page-num page-num-selected'>{{ p }}</li>
 				{% elif p >= page_obj.number|add:-2 and p <= page_obj.number|add:2 %}
 
-				<li class="page-num">
-					<a href="?page={{ p }}">{{ p }}</a>
+				<li class='page-num'>
+					<a href='?page={{ p }}'>{{ p }}</a>
 				</li>
 				{% endif %}
 				{% endfor %}
 
 				{% if page_obj.has_next %}
-				<li class="page-num">
-					<a href="?page={{ page_obj.next_page_number }}">&gt;</a>
+				<li class='page-num'>
+					<a href='?page={{ page_obj.next_page_number }}'>&gt;</a>
 				</li>
 				{% endif %}
-
 			</ul>
 		</nav>
 		{% endif %}

@@ -3,25 +3,25 @@
 <html>
 <head>
 	<title>{{ title }}</title>
-	<link type="text/css" href="{% static 'visited/css/styles.css' %}" rel="stylesheet" />
+	<link type='text/css' href="{% static 'visited/css/styles.css' %}" rel='stylesheet' />
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCgooVnFSJQO4USb2PXjij8WxvgvHW15P4"></script>
+	<script src='https://maps.googleapis.com/maps/api/js?key=AIzaSyCgooVnFSJQO4USb2PXjij8WxvgvHW15P4'></script>
 </head>
 <body>
-<table class="table-page" border=0 cellpadding="0" cellspacing="0">
+<table class="table-page" border=0 cellpadding='0' cellspacing='0'>
 <tr><td valign=top>
 {% block mainmenu %}
-<div class="header">
-<ul id="mainmenu" class="mainmenu">
+<div class='header'>
+<ul id='mainmenu' class='mainmenu'>
 {% for m in menu %}
-			<li><a href="{% url m.url_name %}">{{m.title}}</a></li>
+			<li><a href='{% url m.url_name %}'>{{m.title}}</a></li>
 {% endfor %}
 
 {% if request.user.is_authenticated %}
 <!-- Профиль -->
-	<li class="last"> {{ user.username }} | <a href="{% url 'logout' %}">Выйти</a></li>
+	<li class='last'> {{ user.username }} | <a href="{% url 'logout' %}">Выйти</a></li>
 	{% if avatar %}
-		<li class="last"><img src="{{ avatar }}" height=40 width=40"></li>
+		<li class='last'><img src='{{ avatar }}' height=40 width=40"></li>
 	{% else %}
 		<li class='last'><img src='{{ user.profile.avatar.url }}' height=40 width=40"></li>
 	{% endif %}
@@ -31,18 +31,17 @@
 </ul>
 <div class="clear"></div>
 <!-- Описание приложения -->
-<div class="description-site" style="text-align: center">Приложение, с помощью которого люди смогут хранить свои впечатления о посещаемых местах.
-</div>
+<div class='description-site' style='text-align: center'>Приложение, с помощью которого люди смогут хранить свои впечатления о посещаемых местах.</div>
 </div>
 {% endblock mainmenu %}
 
-<table class="table-content" border=0 cellpadding="0" cellspacing="0">
+<table class='table-content' border=0 cellpadding='0' cellspacing='0'>
 	<tr>
-		<td valign="top" class="content">
+		<td valign='top' class='content'>
 
 <!-- Блок контента -->
 
-<div class="content-text">
+<div class='content-text'>
 {% block content %}
 {% endblock %}
 
@@ -54,13 +53,13 @@
 <!-- Footer -->
 <tr>
 	<td valign=top>
-		<div id="footer">
+		<div id='footer'>
 			<p>&copy; 2023 Пусть у вас будет больше хороших воспоминаний!</p>
 		</div>
 	</td>
 </tr>
 </table>
-<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCgooVnFSJQO4USb2PXjij8WxvgvHW15P4&callback=initMap"></script>
+<script async defer src='https://maps.googleapis.com/maps/api/js?key=AIzaSyCgooVnFSJQO4USb2PXjij8WxvgvHW15P4&callback=initMap'></script>
 <!-- Конец footer'а и страницы -->
 </body>
 </html>
