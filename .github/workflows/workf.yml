@@ -1,6 +1,5 @@
 name: Workflow PR
-on:
-  workflow-dispatch:
+on: workflow_dispatch
 jobs:
   secret docker:
     runs-on: windows-latest
