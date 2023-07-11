@@ -1,7 +1,7 @@
 name: Workflow PR
 on: workflow_dispatch
 jobs:
-  secret docker:
+  secret_docker:
     runs-on: windows-latest
     steps:
       - name: Print to console
