@@ -4,6 +4,9 @@ jobs:
   secret docker:
     runs-on: windows-latest
     steps:
+      - name: Print to console
+        run: echo Hello GH Actions
       - name: Check
         uses: actions/checkout@v3
+
 
